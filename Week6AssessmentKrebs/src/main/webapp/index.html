@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type ="text/javascript">
+function validateForm(form){
+	if(form.type.value == ""){
+		alert("error: field is empty");
+		form.type.focus();
+		return false;
+	}
+	
+	var re = /^[\w ]+$/;
+	
+	if(!re.test(form.type.value)){
+		alert("error: input contains invalid characters");
+		form.type.focus();
+		return false;
+	}
+	if(form.item.value == ""){
+		alert("error: field is empty");
+		form.item.focus();
+		return false;
+	}
+	
+
+	
+	if(!re.test(form.item.value)){
+		alert("error: input contains invalid characters");
+		form.item.focus();
+		return false;
+	}
+	
+	//validation successful
+	return true;
+}
+
+
+
+</script>
+</head>
+<body>
+<form action = "addItemServlet" method = "post" onsubmit="return validateForm(this);">
+Type: <input type = "text" name = "type">
+Item: <input type = "text" name = "item">
+<input type = "submit" value = "Add Item">
+</form> <br />
+<a href = "viewAllItemsServlet">View the complete list</a>
+</body>
+</html>
